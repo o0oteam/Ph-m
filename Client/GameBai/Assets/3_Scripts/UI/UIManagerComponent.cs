@@ -7,7 +7,7 @@ public class UIManagerComponent : MonoBehaviour
 {
 	#region Fields
 
-	public static UIManagerComponent Instance;
+	public static UIManagerComponent InstanceMainUI;
 
 	public float TweenTime = 0.5f;
 	public bool isSyncTweenTime = false;
@@ -22,8 +22,7 @@ public class UIManagerComponent : MonoBehaviour
 
 	public virtual void Awake ()
 	{
-		Instance = GetComponent<UIManagerComponent> ();
-		_CurrentUI = UIName.Login;
+		InstanceMainUI = GetComponent<UIManagerComponent> ();
 	}
 
 	public virtual void Start ()
@@ -31,9 +30,13 @@ public class UIManagerComponent : MonoBehaviour
 		DictUI.Clear ();
 		for (int i = 0; i < ListUI.Count; i++) {
 			DictUI.Add (ListUI [i].NameUI, ListUI [i]);
+			if(ListUI[i].NameUI != _CurrentUI)
+				ListUI [i].HideUI ();
 			if (isSyncTweenTime)
 				ListUI [i].TweenTime = TweenTime;
 		}
+
+		DictUI [_CurrentUI].ShowUI ();
 	}
 
 	#endregion Init

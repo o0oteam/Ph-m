@@ -34,13 +34,13 @@ public class LoginUI : UIComponent
 	void OnButtonLoginFBClicked ()
 	{
 		//TODO Log in FB
-		UIManagerComponent.Instance.ChangUIByName (UIName.Portal);
+		MainUIManager.InstanceMainUI.ChangUIByName (UIName.Portal);
 	}
 
 	void OnButtonLoginGuestClicked ()
 	{
 		//TODO Log in Guest
-		UIManagerComponent.Instance.ChangUIByName (UIName.Portal);
+		MainUIManager.InstanceMainUI.ChangUIByName (UIName.Portal);
 	}
 
 	#endregion Helper Methods
